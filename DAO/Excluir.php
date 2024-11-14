@@ -23,10 +23,10 @@
             }//Fim do catch
         }//Fim do metodo
 
-        function excluirProdutos(Conexao $conexao, int $codigo){
+        function excluirItem(Conexao $conexao, int $codigo){
             try{
                 $conn = $conexao->conectar();
-                $sql = "delete from jogos where codigo = '$codigo'";
+                $sql = "delete from item where codigo = '$codigo'";
                 $result = mysqli_query($conn, $sql);
 
                 mysqli_close($conn);

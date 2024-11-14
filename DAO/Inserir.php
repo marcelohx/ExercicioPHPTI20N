@@ -26,11 +26,11 @@
         }//Fim do metodo
 
         //Cadastro de Jogos
-        function cadastrarProduto(Conexao $conexao, int $codigo, string $nome, string $estudio,string $genero){
+        function cadastrarItem(Conexao $conexao, int $codigo, string $nome, string $marca,string $modelo, int $quantidade){
             try{
                 $conn = $conexao->conectar();//Abrindo conexao com o banco
-                $sql = "Insert into jogos(codigo, nome, estudio, genero)
-                       values('$codigo','$nome','$estudio','$genero')";
+                $sql = "Insert into item(codigo, nome, marca, modelo, quantidade)
+                       values('$codigo','$nome','$marca','$modelo','$quantidade')";
                 $result = mysqli_query($conn, $sql);//Commit no banco
                 //Fechar a conexao com o banco
                 mysqli_close($conn);

@@ -27,10 +27,10 @@
             }
         }//Fim do metodo
 
-        function consultarProduto(Conexao $conexao, int $codigo){
+        function consultarItem(Conexao $conexao, int $codigo){
             try{
                 $conn = $conexao->conectar();
-                $sql = "select * from jogos where codigo = '$codigo'";
+                $sql = "select * from item where codigo = '$codigo'";
                 $result = mysqli_query($conn,$sql);
 
                 while($dados = mysqli_fetch_Array($result))
@@ -38,8 +38,9 @@
                     if($dados['codigo'] == $codigo){
                         echo "<br>Código: ".$dados['codigo'].
                              "<br>Nome: ".$dados['nome'].
-                             "<br>Estudio: ".$dados['estudio'].
-                             "<br>Gênero: ".$dados['genero'];
+                             "<br>Marca: ".$dados['marca'].
+                             "<br>Modelo: ".$dados['modelo'].
+                             "<br>Quantidade: ".$dados['quantidade'];
                         return;//Encerra o processo
                     }
                     echo "Código digitado não é válido!";

@@ -17,46 +17,39 @@
     </head>
     <body>
         <form method="POST">
-            <div class="row">
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Código" aria-label="Código" type="number" name="codigo" id="codigo">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Nome" aria-label="Nome" type="text" name="nome" id="nome">
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Endereco" aria-label="Endereco" type="text" name="endereco" id="endereco">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Telefone" aria-label="Telefone" type="text" name="telefone" id="telefone">
-                </div>
-            </div>
+            <label>Código: </label>
+            <input type="number" name="codigo" id="codigo"><br><br>
+ 
+            <label>Nome: </label>
+            <input type="text" name="nome" id="nome"><br><br>
+ 
+            <label>Marca: </label>
+            <input type="text" name="marca" id="marca"><br><br>
+ 
+            <label>Modelo: </label>
+            <input type="text" name="modelo" id="modelo"><br><br>
 
+            <label>Quantidade: </label>
+            <input type="number" name="quantidade" id="quantidade"><br><br>
+ 
             <button type="submit">Cadastrar
             <?php
                 $conexao  = new Conexao();//Conectando o banco
-    
+ 
                 //Pegar os dados do formulário
                 $codigo   = $_POST['codigo'];
                 $nome     = $_POST['nome'];
-                $endereco = $_POST['endereco'];
-                $telefone = $_POST['telefone'];
+                $marca = $_POST['marca'];
+                $modelo = $_POST['modelo'];
+                $quantidade = $_POST['quantidade'];
                 //Chamar a classe inserir
                 $inserir = new Inserir();
-                    
+                
             ?>
-            </button>  
+            </button>    
         </form><!-- Fim do formulário -->
-
-       
-
-
-
         <?php
-            echo $inserir->cadastrarPessoa($conexao,$codigo,$nome,$endereco,$telefone);
+            echo $inserir->cadastrarItem($conexao,$codigo,$nome,$marca,$modelo,$quantidade);
         ?>
         <br><br>
         <a href="index.php"><button>Voltar</button><br><br>

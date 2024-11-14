@@ -24,10 +24,10 @@
             }//Fim do catch
         }//Fim do metodo
 
-        function atualizarProdutos(Conexao $conexao, string $campo, string $novoDado, int $codigo){
+        function atualizarItem(Conexao $conexao, string $campo, string $novoDado, int $codigo){
             try{
                 $conn = $conexao->conectar();
-                $sql = "update jogos set $campo = '$novoDado' where codigo = '$codigo'";
+                $sql = "update item set $campo = '$novoDado' where codigo = '$codigo'";
                 $result = mysqli_query($conn, $sql);
 
                 mysqli_close($conn);
