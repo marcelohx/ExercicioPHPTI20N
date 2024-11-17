@@ -1,4 +1,4 @@
-<?php
+<div?php
     namespace PHP\Modelo;
     require_once('DAO\Inserir.php');
     require_once('DAO\Conexao.php');
@@ -16,37 +16,110 @@
         <title>Página Principal</title>
     </head>
     <body>
-        <form method="POST">
-            <label>Código: </label>
-            <input type="number" name="codigo" id="codigo"><br><br>
- 
-            <label>Nome: </label>
-            <input type="text" name="nome" id="nome"><br><br>
- 
-            <label>Marca: </label>
-            <input type="text" name="marca" id="marca"><br><br>
- 
-            <label>Modelo: </label>
-            <input type="text" name="modelo" id="modelo"><br><br>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="">INVENTORY</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="index.php" href="index.php">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Cadastrar
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="CadastrarPessoa.php">Cadastrar Pessoa</a></li>
+                                <li><a class="dropdown-item" href="CadastrarItem.php">Cadastrar Item</a></li>
+                                <li><a class="dropdown-item" href="CadastrarFuncionario.php">Cadastrar Funcionario</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Consultar
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="ConsultarPessoa.php">Consultar Pessoa</a></li>
+                                <li><a class="dropdown-item" href="ConsultarItem.php">Consultar Item</a></li>
+                                <li><a class="dropdown-item" href="ConsultarFuncionario.php">Consultar Funcionario</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Atualizar
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="AtualizarPessoa.php">Atualizar Pessoa</a></li>
+                                <li><a class="dropdown-item" href="AtualizarItem.php">Atualizar Item</a></li>
+                                <li><a class="dropdown-item" href="AtualizarFuncionario.php">Atualizar Funcionario</a></li>
+                            </ul>
+                        </li>
 
-            <label>Quantidade: </label>
-            <input type="number" name="quantidade" id="quantidade"><br><br>
- 
-            <button type="submit">Cadastrar
-            <?php
-                $conexao  = new Conexao();//Conectando o banco
- 
-                //Pegar os dados do formulário
-                $codigo   = $_POST['codigo'];
-                $nome     = $_POST['nome'];
-                $marca = $_POST['marca'];
-                $modelo = $_POST['modelo'];
-                $quantidade = $_POST['quantidade'];
-                //Chamar a classe inserir
-                $inserir = new Inserir();
-                
-            ?>
-            </button>    
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Excluir
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="ExcluirPessoa.php">Excluir Pessoa</a></li>
+                                <li><a class="dropdown-item" href="ExcluirItem.php">Excluir Item</a></li>
+                                <li><a class="dropdown-item" href="ExcluirFuncionario.php">Excluir Funcionario</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <br><br>
+        <form method="POST">
+            <div class="row">
+                <div class="col">
+                    <input type="number" name="codigo" id="codigo"  class="form-control" placeholder="Código" aria-label="Código"><br><br>
+                </div>
+                <div class="col">
+                    <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" aria-label="Nome"><br><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" name="marca" id="marca" class="form-control" placeholder="Marca" aria-label="Marca">
+                </div>
+                <div class="col">
+                    <input type="text" name="modelo" id="modelo" class="form-control" placeholder="Modelo" aria-label="Modelo">
+                </div>
+                <div class="col">
+                    <input type="number" name="quantidade" id="quantidade" class="form-control" placeholder="Quantidade" aria-label="Quantidade">
+                </div>
+            <div>
+            <br>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="submit">Cadastrar
+                    <?php
+                        $conexao  = new Conexao();//Conectando o banco
+                        //Pegar os dados do formulário
+                        $codigo   = $_POST['codigo'];
+                        $nome     = $_POST['nome'];
+                        $marca = $_POST['marca'];
+                        $modelo = $_POST['modelo'];
+                        $quantidade = $_POST['quantidade'];
+                        //Chamar a classe inserir
+                        $inserir = new Inserir();     
+                    ?>
+                </button>    
+            </div>
         </form><!-- Fim do formulário -->
         <?php
             echo $inserir->cadastrarItem($conexao,$codigo,$nome,$marca,$modelo,$quantidade);

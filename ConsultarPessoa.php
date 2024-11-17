@@ -15,22 +15,91 @@
         <title>Página de Consulta</title>
     </head>
     <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="">INVENTORY</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="index.php" href="index.php">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Cadastrar
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="CadastrarPessoa.php">Cadastrar Pessoa</a></li>
+                                <li><a class="dropdown-item" href="CadastrarItem.php">Cadastrar Item</a></li>
+                                <li><a class="dropdown-item" href="CadastrarFuncionario.php">Cadastrar Funcionario</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Consultar
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="ConsultarPessoa.php">Consultar Pessoa</a></li>
+                                <li><a class="dropdown-item" href="ConsultarItem.php">Consultar Item</a></li>
+                                <li><a class="dropdown-item" href="ConsultarFuncionario.php">Consultar Funcionario</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Atualizar
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="AtualizarPessoa.php">Atualizar Pessoa</a></li>
+                                <li><a class="dropdown-item" href="AtualizarItem.php">Atualizar Item</a></li>
+                                <li><a class="dropdown-item" href="AtualizarFuncionario.php">Atualizar Funcionario</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Excluir
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="ExcluirPessoa.php">Excluir Pessoa</a></li>
+                                <li><a class="dropdown-item" href="ExcluirItem.php">Excluir Item</a></li>
+                                <li><a class="dropdown-item" href="ExcluirFuncionario.php">Excluir Funcionario</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <br>
         <form method="POST">
             <label>Código: </label>
             <input type="number" name="codigo" id="codigo"><br><br>
 
-            <button type="submit">
-                Consultar
-            <?php
-                //conexao com o banco
-                $conexao = new Conexao();
-                //Coletar o codigo
-                $codigo = $_POST['codigo'];
-                //chamar o consultar
-                $consultar = new Consultar();
-                
-            ?>
-            </button>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="submit">
+                    Consultar
+                <?php
+                    //conexao com o banco
+                    $conexao = new Conexao();
+                    //Coletar o codigo
+                    $codigo = $_POST['codigo'];
+                    //chamar o consultar
+                    $consultar = new Consultar(); 
+                ?>
+                </button>
+            </div>
         </form>
         <?php
             echo $consultar->consultarPessoa($conexao,$codigo);
