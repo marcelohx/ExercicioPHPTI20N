@@ -12,11 +12,7 @@
                 $result = mysqli_query($conn, $sql);
 
                 mysqli_close($conn);
-                if($result){
-                    echo "<br>Atualizado com sucesso!";
-                }else{
-                    echo "<br><br>Não foi possivel atualizar!";
-                }
+
             }
             catch(Exception $erro)
             {
@@ -31,11 +27,7 @@
                 $result = mysqli_query($conn, $sql);
 
                 mysqli_close($conn);
-                if($result){
-                    echo "<br>Atualizado com sucesso!";
-                }else{
-                    echo "<br><br>Não foi possivel atualizar!";
-                }
+                
             }
             catch(Exception $erro)
             {
@@ -50,11 +42,7 @@
                 $result = mysqli_query($conn, $sql);
 
                 mysqli_close($conn);
-                if($result){
-                    echo "<br>Atualizado com sucesso!";
-                }else{
-                    echo "<br><br>Não foi possivel atualizar!";
-                }
+                
             }
             catch(Exception $erro)
             {

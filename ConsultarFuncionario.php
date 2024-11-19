@@ -84,13 +84,17 @@
         </nav>
         <br>
         <form method="POST">
-            <label>Código: </label>
-            <input type="number" name="codigo" id="codigo"><br><br>
-
+            <div class="row">
+                <div class="col">
+                    <input class="form-control" placeholder="Código" aria-label="Código" type="number" name="codigo" id="codigo"><br><br>
+                </div>
+            </div>
             <div class="d-grid gap-2 col-6 mx-auto">
                 <button class="btn btn-primary" type="submit">
                     Consultar
                 <?php
+
+                    $_POST['codigo'] = 0;
                     //conexao com o banco
                     $conexao = new Conexao();
                     //Coletar o codigo
@@ -105,7 +109,5 @@
         <?php
             echo $consultar->consultarFuncionario($conexao,$codigo);
         ?>
-        <br><br>
-        <a href="index.php"><button>Voltar</button><br><br>
     </body>
 </html>

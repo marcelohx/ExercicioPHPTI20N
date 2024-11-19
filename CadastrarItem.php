@@ -1,4 +1,4 @@
-<div?php
+<?php
     namespace PHP\Modelo;
     require_once('DAO\Inserir.php');
     require_once('DAO\Conexao.php');
@@ -108,6 +108,8 @@
             <div class="d-grid gap-2 col-6 mx-auto">
                 <button class="btn btn-primary" type="submit">Cadastrar
                     <?php
+                    if(isset($_POST['codigo'],$_POST['nome'],$_POST['marca'],$_POST['modelo'],$_POST['quantidade'])){
+                        
                         $conexao  = new Conexao();//Conectando o banco
                         //Pegar os dados do formulário
                         $codigo   = $_POST['codigo'];
@@ -116,15 +118,18 @@
                         $modelo = $_POST['modelo'];
                         $quantidade = $_POST['quantidade'];
                         //Chamar a classe inserir
-                        $inserir = new Inserir();     
+                        $inserir = new Inserir();
+                        $inserir->cadastrarItem($conexao,$codigo,$nome,$marca,$modelo,$quantidade);   
+                    }else{
+                        $_POST['codigo'] = 0;
+                        $_POST['nome'] = "";
+                        $_POST['marca'] = "";
+                        $_POST['modelo'] = "";
+                        $_POST['quantidade'] = "";
+                    }      
                     ?>
                 </button>    
             </div>
         </form><!-- Fim do formulário -->
-        <?php
-            echo $inserir->cadastrarItem($conexao,$codigo,$nome,$marca,$modelo,$quantidade);
-        ?>
-        <br><br>
-        <a href="index.php"><button>Voltar</button><br><br>
     </body>
 </html>

@@ -84,13 +84,16 @@
         </nav>
         <br>
         <form method="POST">
-            <label>Código: </label>
-            <input type="number" name="codigo" id="codigo"><br><br>
-
+            <div class="row">
+                <div class="col">
+                    <input class="form-control" placeholder="Código" aria-label="Código" type="number" name="codigo" id="codigo"><br><br>
+                </div>
+            </div>
             <div class="d-grid gap-2 col-6 mx-auto">
                 <button class="btn btn-primary" type="submit">
                     Consultar
                 <?php
+                    $_POST['codigo'] = 0;
                     //conexao com o banco
                     $conexao = new Conexao();
                     //Coletar o codigo
@@ -101,10 +104,13 @@
                 </button>
             </div>
         </form>
-        <?php
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+            <?php
             echo $consultar->consultarPessoa($conexao,$codigo);
-        ?>
-        <br><br>
-        <a href="index.php"><button>Voltar</button><br><br>
+            ?>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        
     </body>
 </html>

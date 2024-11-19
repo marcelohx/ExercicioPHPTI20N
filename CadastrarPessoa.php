@@ -4,6 +4,9 @@
     require_once('DAO\Conexao.php');
     use PHP\Modelo\DAO\Inserir;
     use PHP\Modelo\DAO\Conexao;
+
+
+
 ?>
 
 <!Doctype HTML>
@@ -91,8 +94,7 @@
         <form method="POST">
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Código" aria-label="Código" type="number"
-                        name="codigo" id="codigo">
+                    <input class="form-control" placeholder="Código" aria-label="Código" type="number" name="codigo" id="codigo">
                 </div>
                 <div class="col">
                     <input type="text" class="form-control" placeholder="Nome" aria-label="Nome" type="text" name="nome"
@@ -112,24 +114,31 @@
             </div>
             <br>
             <div class="d-grid gap-2 col-6 mx-auto">
+               
                 <button class="btn btn-primary" type="submit">Cadastrar
-                    <?php
-                        $conexao = new Conexao();//Conectando o banco
-                        
-                        //Pegar os dados do formulário
-                        $codigo = $_POST['codigo'];
-                        $nome = $_POST['nome'];
-                        $endereco = $_POST['endereco'];
-                        $telefone = $_POST['telefone'];
-                        //Chamar a classe inserir
-                        $inserir = new Inserir();
+                    <?php   
+                        if(isset($_POST['codigo'],$_POST['nome'],$_POST['telefone'],$_POST['endereco'])){    
+                            $conexao = new Conexao();//Conectando o banco
+                            
+                            //Pegar os dados do formulário
+                            $codigo = $_POST['codigo'];
+                            $nome = $_POST['nome'];
+                            $endereco = $_POST['endereco'];
+                            $telefone = $_POST['telefone'];
+                            //Chamar a classe inserir
+                            $inserir = new Inserir();
+                            $inserir->cadastrarPessoa($conexao, $codigo, $nome, $endereco, $telefone);
+                        }else{
+                            $_POST['codigo'] = 0;
+                            $_POST['nome'] = "";
+                            $_POST['endereco'] = "";
+                            $_POST['telefone'] = "";
+                        }
 
                     ?>
                 </button>
             </div>
         </form><!-- Fim do formulário -->
-        <?php
-            echo $inserir->cadastrarPessoa($conexao, $codigo, $nome, $endereco, $telefone);
-        ?>
+      
     </body>
 </html>

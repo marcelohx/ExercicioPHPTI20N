@@ -7,11 +7,13 @@
     class Inserir{
         //Cadastro de Pessoas
         function cadastrarPessoa(Conexao $conexao, int $codigo, string $nome, string $endereco,string $telefone){
-            
                 $conn = $conexao->conectar();//Abrindo conexao com o banco
                 $sql = "Insert into pessoa(codigo, nome, endereco, telefone)
                        values('$codigo','$nome','$endereco','$telefone')";
                 $result = mysqli_query($conn, $sql);//Commit no banco
+                if($result){
+                    echo "Inserido!";
+                }
                 //Fechar a conexao com o banco
                 mysqli_close($conn);
                 //Resposta da inserção
@@ -28,10 +30,6 @@
                 //Fechar a conexao com o banco
                 mysqli_close($conn);
                 //Resposta da inserção
-                if($result){
-                    return "<br>Inserido com Sucesso!";
-                }
-                return "<br><br>Não Inserido!";
             }catch(Except $erro)
             {
                 return "<br>Algo deu Errado!<br><br>".$erro;

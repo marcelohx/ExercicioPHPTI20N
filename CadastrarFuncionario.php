@@ -1,4 +1,4 @@
-<div?php
+<?php
     namespace PHP\Modelo;
     require_once('DAO\Inserir.php');
     require_once('DAO\Conexao.php');
@@ -117,26 +117,28 @@
             <div class="d-grid gap-2 col-6 mx-auto">
                 <button class="btn btn-primary" type="submit">Cadastrar
                     <?php
-                    $conexao = new Conexao();//Conectando o banco
-                    
-                    //Pegar os dados do formulário
-                    $codigo = $_POST['codigo'];
-                    $nome = $_POST['nome'];
-                    $endereco = $_POST['endereco'];
-                    $telefone = $_POST['telefone'];
-                    $cargo = $_POST['cargo'];
-                    $salario = $_POST['salario'];
-                    //Chamar a classe inserir
-                    $inserir = new Inserir();
-
+                    if(isset($_POST['codigo'],$_POST['nome'],$_POST['telefone'],$_POST['endereco'],$_POST['cargo'],$_POST['salario'])){
+                        $conexao = new Conexao();//Conectando o banco
+                        $codigo = $_POST['codigo'];
+                        $nome = $_POST['nome'];
+                        $endereco = $_POST['endereco'];
+                        $telefone = $_POST['telefone'];
+                        $cargo = $_POST['cargo'];
+                        $salario = $_POST['salario'];
+                        //Chamar a classe inserir
+                        $inserir = new Inserir();
+                        $inserir->cadastrarFuncionario($conexao, $codigo, $nome, $endereco, $telefone, $cargo, $salario);
+                    }else{
+                        $_POST['codigo'] = 0;
+                        $_POST['nome'] = "";
+                        $_POST['endereco'] = "";
+                        $_POST['telefone'] = "";
+                        $_POST['cargo'] = "";
+                        $_POST['salario'] = 0;
+                    }
                     ?>
                 </button>
             </div>
         </form><!-- Fim do formulário -->
-        <?php
-            echo $inserir->cadastrarPessoa($conexao, $codigo, $nome, $endereco, $telefone, $cargo, $salario);
-        ?>
-        <br><br>
-        <a href="index.php"><button>Voltar</button><br><br>
     </body>
 </html>

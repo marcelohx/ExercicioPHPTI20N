@@ -84,10 +84,13 @@
         </nav>
         <br>
         <form method="POST">
-            <label>Código: </label>
-            <input type="number" name="codigo" id="codigo"/><br><br>
+            <div class="row">
+                <div class="col">
+                    <input class="form-control" placeholder="Código" aria-label="Código" type="number" name="codigo" id="codigo"><br><br>
+                </div>
+            </div>
 
-            <select name="atualizacao">
+            <select class="form-select" aria-label="Default select example" name="atualizacao">
                 <option value="nome">Nome</option>
                 <option value="endereco">Endereço</option>
                 <option value="telefone">Telefone</option>
@@ -95,12 +98,19 @@
                 <option value="salario">Salario</option>
             </select><br><br>
 
-            <label>Novo Dado: </label>
-            <input type="text" name="novoDado" id="novoDado"/><br><br>
+            <div class="row">
+                <div class="col">
+                    <input class="form-control" placeholder="Novo Dado" aria-label="Novo Dado" type="text" name="novoDado" id="novoDado"/><br><br>
+                </div>
+            </div>
             
             <div class="d-grid gap-2 col-6 mx-auto">
                 <button class="btn btn-primary" type="submit"> Atualizar
                     <?php
+                    $_POST['codigo'] = 0;
+                    $_POST['atualizacao'] = "";
+                    $_POST['novoDado'] = "";
+                    
                     $conexao = new Conexao();
                     $atualizar = new Atualizar();
                     $codigo = $_POST['codigo'];
@@ -113,7 +123,5 @@
         <?php
             echo $atualizar->atualizarFuncionario($conexao,$campo,$novoDado,$codigo);
         ?>
-        <br><br>
-        <a href="index.php"><button>Voltar</button><br><br>
     </body>
 </html>
