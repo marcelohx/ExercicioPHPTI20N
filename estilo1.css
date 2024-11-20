@@ -1,0 +1,17 @@
+body{
+    background-color: rgb(120, 190, 247);
+    
+}
+
+#imgHead {
+    margin-left: 28%;
+    width: 10px;
+}
+
+.container img {
+    max-width:650px;
+    max-height:300px;
+    width: auto;
+    height: auto;
+}
+

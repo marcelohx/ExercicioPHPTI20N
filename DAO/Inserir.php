@@ -45,10 +45,6 @@
                 //Fechar a conexao com o banco
                 mysqli_close($conn);
                 //Resposta da inserção
-                if($result){
-                    return "<br>Inserido com Sucesso!";
-                }
-                return "<br><br>Não Inserido!";
             }catch(Except $erro)
             {
                 return "<br>Algo deu Errado!<br><br>".$erro;

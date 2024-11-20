@@ -108,8 +108,7 @@
             <div class="d-grid gap-2 col-6 mx-auto">
                 <button class="btn btn-primary" type="submit">Cadastrar
                     <?php
-                    if(isset($_POST['codigo'],$_POST['nome'],$_POST['marca'],$_POST['modelo'],$_POST['quantidade'])){
-                        
+                    if(isset($_POST['codigo'],$_POST['nome'],$_POST['marca'],$_POST['modelo'],$_POST['quantidade'])){ 
                         $conexao  = new Conexao();//Conectando o banco
                         //Pegar os dados do formulário
                         $codigo   = $_POST['codigo'];

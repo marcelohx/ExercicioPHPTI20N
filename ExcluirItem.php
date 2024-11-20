@@ -89,20 +89,20 @@
                     <input class="form-control" placeholder="Código" aria-label="Código" type="number" name="codigo" id="codigo"><br><br>
                 </div>
             </div>
-        <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn btn-primary" type="submit">Excluir
-                <?php
-                    $_POST['codigo'] = 0;
-                    $conexao = new Conexao();
-                    $codigo = $_POST['codigo'];
-                    $excluir = new Excluir();
-                    
-                ?>
-            </button>
-        </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="submit">Excluir
+                    <?php
+                    if(isset($_POST['codigo'])){
+                            $conexao = new Conexao();
+                            $codigo = $_POST['codigo'];
+                            $excluir = new Excluir();
+                            $excluir->excluirItem($conexao, $codigo);  
+                        }else{
+                            $_POST['codigo'] = 0;
+                        } 
+                    ?>
+                </button>
+            </div>
         </form>
-        <?php
-            $excluir->excluirItem($conexao, $codigo);
-        ?>
     </body>
 </html>

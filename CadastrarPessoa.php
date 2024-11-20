@@ -119,7 +119,6 @@
                     <?php   
                         if(isset($_POST['codigo'],$_POST['nome'],$_POST['telefone'],$_POST['endereco'])){    
                             $conexao = new Conexao();//Conectando o banco
-                            
                             //Pegar os dados do formulário
                             $codigo = $_POST['codigo'];
                             $nome = $_POST['nome'];

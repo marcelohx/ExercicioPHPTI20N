@@ -93,21 +93,20 @@
                 <button class="btn btn-primary" type="submit">
                     Consultar
                 <?php
-
-                    $_POST['codigo'] = 0;
-                    //conexao com o banco
-                    $conexao = new Conexao();
-                    //Coletar o codigo
-                    $codigo = $_POST['codigo'];
-                    //chamar o consultar
-                    $consultar = new Consultar();
-                    
+                    if(isset($_POST['codigo'])){
+                        //conexao com o banco
+                        $conexao = new Conexao();
+                        //Coletar o codigo
+                        $codigo = $_POST['codigo'];
+                        //chamar o consultar
+                        $consultar = new Consultar();
+                        $consultar->consultarFuncionario($conexao,$codigo);
+                    }else{
+                        $_POST['codigo'] = 0;
+                    }
                 ?>
                 </button>
             </div>
         </form>
-        <?php
-            echo $consultar->consultarFuncionario($conexao,$codigo);
-        ?>
     </body>
 </html>

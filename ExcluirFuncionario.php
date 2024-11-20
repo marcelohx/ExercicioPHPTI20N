@@ -90,20 +90,20 @@
                 </div>
             </div>
 
-        <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn btn-primary" type="submit">Excluir
-                <?php
-                    $_POST['codigo'] = 0;
-                    $conexao = new Conexao();
-                    $codigo = $_POST['codigo'];
-                    $excluir = new Excluir();
-                    
-                ?>
-            </button>
-        </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="submit">Excluir
+                    <?php
+                    if(isset($_POST['codigo'])){
+                            $conexao = new Conexao();
+                            $codigo = $_POST['codigo'];
+                            $excluir = new Excluir();
+                            $excluir->excluirFuncionario($conexao, $codigo);  
+                        }else{
+                            $_POST['codigo'] = 0;
+                        } 
+                    ?>
+                </button>
+            </div>
         </form>
-        <?php
-            $excluir->excluirFuncionario($conexao, $codigo);
-        ?>
     </body>
 </html>

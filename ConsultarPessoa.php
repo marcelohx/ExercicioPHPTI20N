@@ -93,24 +93,21 @@
                 <button class="btn btn-primary" type="submit">
                     Consultar
                 <?php
-                    $_POST['codigo'] = 0;
-                    //conexao com o banco
-                    $conexao = new Conexao();
-                    //Coletar o codigo
-                    $codigo = $_POST['codigo'];
-                    //chamar o consultar
-                    $consultar = new Consultar(); 
+                    if(isset($_POST['codigo'])){
+                        //conexao com o banco
+                        $conexao = new Conexao();
+                        //Coletar o codigo
+                        $codigo = $_POST['codigo'];
+                        //chamar o consultar
+                        $consultar = new Consultar();
+                        $consultar->consultarPessoa($conexao,$codigo);
+                    }else{
+                        $_POST['codigo'] = 0;
+                    } 
                 ?>
                 </button>
             </div>
         </form>
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-            <?php
-            echo $consultar->consultarPessoa($conexao,$codigo);
-            ?>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-        
     </body>
 </html>

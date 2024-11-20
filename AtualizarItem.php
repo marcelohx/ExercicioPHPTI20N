@@ -106,21 +106,21 @@
             <div class="d-grid gap-2 col-6 mx-auto">
                 <button class="btn btn-primary" type="submit"> Atualizar
                     <?php
-                    $_POST['codigo'] = 0;
-                    $_POST['atualizacao'] = "";
-                    $_POST['novoDado'] = "";
-                    
-                    $conexao = new Conexao();
-                    $atualizar = new Atualizar();
-                    $codigo = $_POST['codigo'];
-                    $campo = $_POST['atualizacao'];
-                    $novoDado = $_POST['novoDado'];                
+                    if(isset($_POST['codigo'],$_POST['atualizacao'],$_POST['novoDado'])){
+                        $conexao = new Conexao();
+                        $atualizar = new Atualizar();
+                        $codigo = $_POST['codigo'];
+                        $campo = $_POST['atualizacao'];
+                        $novoDado = $_POST['novoDado'];
+                        $atualizar->atualizarPessoa($conexao,$campo,$novoDado,$codigo);
+                    }else{
+                        $_POST['codigo'] = 0;
+                        $_POST['atualizacao'] = "";
+                        $_POST['novoDado'] = "";
+                    }                             
                     ?>
                 </button>
             </div>
         </form>
-        <?php
-            echo $atualizar->atualizarItem($conexao,$campo,$novoDado,$codigo);
-        ?>
     </body>
 </html>
